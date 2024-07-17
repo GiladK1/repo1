@@ -4,7 +4,7 @@ import json
 
 routes = Blueprint('routes',__name__)
 
-@routes.route("/get_reservation", methods = ["GET"])
+@routes.route("/get_data", methods = ["GET"])
 async def get_str():
     current_app.logger.info("START")
     reservation_id = request.args.get('reservation_id')
