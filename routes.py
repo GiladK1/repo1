@@ -1,8 +1,14 @@
-from flask import Blueprint, Response, current_app
+from flask import Blueprint, Response, current_app, request
+from bl import BL
+import json
 
 routes = Blueprint('routes',__name__)
 
-@routes.route("/hello", methods = ["GET"])
-async def hello():
+@routes.route("/get_reservation", methods = ["GET"])
+async def get_str():
     current_app.logger.info("START")
-    return Response("Hello World from app 1!", 200)
+    reservation_id = request.args.get('reservation_id')
+    result = await BL.get_str()
+    current_app.logger.info("END")
+    return  Response(result, 200)
+
